@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bring Your Own Claw — The Future is App-less</title>
+    <meta
+      name="description"
+      content="Bring your own OpenClaw to the web."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bring Your Own Claw — The Future is App-less" />
+    <meta
+      property="og:description"
+      content="Bring Your Own Claw is a stepping stone to an app-less future: letting humans bring their OpenClaws to the existing web."
+    />
+    <meta property="og:image" content="/preview.jpg" />
+    <meta property="og:image:alt" content="BYOClaw preview image" />
+    <meta property="og:url" content="https://byoclaw.fun/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bring Your Own Claw" />
+    <meta
+      name="twitter:description"
+      content="Bring Your Own Claw is a stepping stone to an app-less future: letting humans bring their OpenClaws to the existing web."
+    />
+    <meta name="twitter:image" content="/preview.jpg" />
+    <meta name="twitter:image:alt" content="BYOClaw preview image" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="aurora"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="scanlines"></div>
+    <main class="page">
+
+      <header>
+        <div class="title-row">
+          <h1 class="logo">BYOClaw</h1>
+          <img
+            class="title-plushie"
+            src="./assets/plushie.webp"
+            alt="BYOClaw plushie"
+          />
+        </div>
+        <p class="tagline">
+          Bring your <em>own</em> OpenClaw to the web
+        </p>
+        <p class="subtitle">
+          Bring Your Own Claw is a specification for <i>builders</i> that lets <i>humans</i>
+          request temporary access to a restricted API on a website for their OpenClaw.
+        </p>
+
+      </header>
+
+      <section>
+        <h2>Usecases</h2>
+        <div class="uses-grid">
+          <article class="placeholder">
+            <h3>Bring Your Own AI</h3>
+            <p>
+              Nowadays websites are expected to have ever more complex and niche functionality.
+              While ever more achievable with the aid of agents, every additional niche function clutters the user interface making the core functionality harder to use and comprehend.
+            </p>
+            <p style="margin-top: 0.5em; font-weight: 700;">
+              BYOClaw lets websites delegate richer, niche, and highly personalized
+              functionality to a human’s OpenClaw.
+            </p>
+            <ul class="req-list">
+              <li>Websites focus on the core user interfaces that represent their unique data and networks.</li>
+              <li>Humans bring their own AI to work with the data in specialized ways.</li>
+            </ul>
+          </article>
+          <article class="placeholder usecase-appless">
+            <h3 id="usecase-appless-heading">The Future is App<i style="opacity: 0.617">less</i></h3>
+            <p>
+              Claw-only Services are single-page websites with a BYOClaw button.
+              They expose functionality only through Claw APIs, and your Claw
+              builds your own local interface customized entirely for you.
+            </p>
+            <p style="margin-top: 0.5em">
+              In our opinion, <i>the future is app-less</i>.
+            </p>
+          </article>
+          <article class="placeholder uses-example-box">
+            <h3><span class="uses-example-label">EXAMPLE</span>&nbsp;&nbsp;Bring Your Own AI</h3>
+            <div class="uses-example-layout">
+              <div class="uses-example-copy">
+                <p>
+                  At <a href="https://supermassivebookhole.com">Supermassive Book Hole</a> humans curate collections of books and other media.
+                  SMBH is able to focus on its beautiful & simple user interface by outsourcing features that would add visual complexity to BYOClaw.
+                  For example, with BYOClaw a user can:
+                </p>
+                <ul class="req-list uses-example-list">
+                  <li>
+                    Compare their collection with other users and build a shared
+                    reading journey
+                  </li>
+                  <li>
+                    Ask for one recommendation from a friend or influencer based
+                    on what the Claw knows about them
+                  </li>
+                  <li>
+                    Import books from GoodReads, Wikipedia, their local library’s API… anywhere the Claw can access.
+                  </li>
+                </ul>
+                <p>
+                  SMBH provides the data, interfaces and the “meeting point” for humans to
+                  share their tastes while their Claws do the heavy lifting on how to best use that
+                  data for their humans’ needs.
+                </p>
+              </div>
+              <img
+                class="uses-example-logo"
+                src="./assets/smbh.webp"
+                alt="Supermassive Book Hole logo"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="quick-start-section">
+        <h2>Quick Start</h2>
+        <div class="quick-start-grid">
+          <article class="placeholder quick-start-box">
+            <h3>Demo</h3>
+            <p>
+              See it in action at
+              <a href="https://supermassivebookhole.com">supermassivebookhole.com</a>.
+            </p>
+          </article>
+          <article class="placeholder quick-start-box">
+            <h3>Implement</h3>
+            <p>
+              Tell your claw to <code>implement byoclaw.fun</code>.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Specification Overview</h2>
+        <div class="spec-grid">
+          <article class="placeholder placeholder-core">
+            <h3>Twin Fundamentals</h3>
+            <ol class="req-list">
+              <li>A restricted, separate api for OpenClaws</li>
+              <li>A prompt the human gives their Claw</li>
+            </ol>
+          </article>
+          <article class="build-summary-box">
+            <h3>What You Build</h3>
+            <p>
+              Websites implement an <code>/api/claw/*</code> endpoint and a token+prompt issuance button.
+              OpenClaws consume gateway text.
+            </p>
+            <p style="margin-top: 0.8em">
+              Tell your claw: <code>Implement byoclaw.fun</code>
+            </p>
+          </article>
+          <article class="placeholder">
+            <h3>Human-Initiated Token Exchange</h3>
+            <p>
+              A claw token can only be obtained by exchanging a
+              human-instigated login token (ie. a website cookie).
+            </p>
+            <p style='font-size: smaller; font-style: italic; opacity: 0.617'>
+              This happens between the human’s browser and your API: the Claw never sees the human’s cookie.
+            </p>
+          </article>
+          <article class="placeholder">
+            <h3>Short-Lived Tokens</h3>
+            <p>
+              Claw tokens are short-lived (we suggest 10 minutes, never more
+              than 60 minutes).
+            </p>
+          </article>
+          <article class="placeholder">
+            <h3>No Destructive Actions</h3>
+            <p>Claws cannot do destructive or dangerous actions.</p>
+          </article>
+          <article class="placeholder">
+            <h3>No Sensitive Data</h3>
+            <p>Claws should not have access to sensitive data.</p>
+          </article>
+          <article class="placeholder">
+            <h3>Separate API Surface</h3>
+            <p>
+              The API doesn’t have to be a separate subdomain, but an exclusive
+              API base path is sufficient.
+            </p>
+          </article>
+
+          <article class="placeholder">
+            <h3>Human-Scannable Prompt Spec</h3>
+            <p>
+              We have a specification for prompts that should be adhered to so
+              a human can scan it and see it is mundane.
+            </p>
+          </article>
+          <article class="placeholder placeholder-feature">
+            <h3>Token Renewal</h3>
+            <p>
+              Claw tokens can be renewed.
+              Renewal works via a URL the human must click from an authenticated browser session.
+            </p>
+          </article>
+          <article class="placeholder spec-full-box">
+            <h3>Read the Full Specification</h3>
+            <p>
+              The overview above highlights the key principles. For complete
+              details, examples, and versioned updates, use the canonical
+              <code>SPEC.md</code> document.
+            </p>
+            <a
+              class="spec-full-link"
+              href="https://github.com/roover-glitch/byoclaw/blob/main/SPEC.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open SPEC.md
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="prompt-guidelines">
+        <h2>Prompt Guidelines</h2>
+        <div class="prompt-guidelines-layout">
+          <div class="prompt-guidelines-main">
+            <p>
+              Prompts should be easily scannable by the human to prove there is no prompt injection attempts.
+            </p>
+            <p>
+              The best way to do this is to be as concise as possible.
+            </p>
+            <ul class="req-list prompt-guidelines-list">
+              <li>Endpoints should thus be named so the method & path (together with the website description) <b>alone</b> perfectly describe the purpose to the claw.</li>
+              <li>Additional docs should be minimal to prove no prompt injection.</li>
+              <li>JSON responses should explain themselves to the Claw without requiring documentation.</li>
+              <li>Add HTTP Headers as required to assist the Claw also.</li>
+            </ul>
+            <p>
+              Enclose the text in triple backticks so it renders well when the human pastes it.
+            </p>
+          </div>
+          <div class="prompt-guidelines-example">
+            <pre><code>
+```md
+# Supermassive Book Hole — Temporary Gateway
+
+SMBH is a website where humans curate virtual shelves
+of books.
+
+## Creds
+- Username: @mxcl
+- Authorization: Bearer smbhclaw_…
+- Base URL: https://api.example.com/api/claw
+
+## APIs
+- GET /:username
+- GET /:username/following
+- GET /:username/followers
+- POST /:shelf-id/:media-type
+  Fields: {title, author, shelf}
+
+### `:media-type`
+["book", "movie", "show", "game", "album", "single"]
+```
+        </code></pre>
+            <div class="footnote">EXAMPLE</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="spec-assets-layout">
+        <div class="spec-assets-left">
+          <section>
+            <h2>Specification Development</h2>
+            <p>
+              The specification is a living, open source document.
+            </p>
+            <p>
+              Please have your Claw check the issue tracker for existing issues
+              before opening a new one.
+            </p>
+            <p>
+              Contributions are welcome from both humans and AI.
+              Please ensure contributions add value to the specification.
+              Low-quality submissions may be removed.
+            </p>
+            <a
+              class="github-cta"
+              href="https://github.com/roover-glitch/byoclaw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub
+            </a>
+          </section>
+
+          <section>
+            <h2>Specification Version</h2>
+            <p>The BYOClaw specification is currently at version <b style='color: white'>0.1.0</b></p>
+          </section>
+        </div>
+
+        <section class="spec-assets-right">
+          <h2>Assets</h2>
+          <p>
+            You can either download these buttons or link to them directly. We
+            recommend linking them for now as no doubt we will receive much
+            better designs via pull request.
+          </p>
+          <div class="asset-grid">
+            <article class="asset-card">
+              <img src="./assets/button.webp" alt="BYOClaw button (WebP)"/>
+              <h3>button</h3>
+              <p class="asset-meta">WebP: 14.4 kB · JPEG: 66.4 kB</p>
+              <div class="asset-actions">
+                <a class="asset-action" href="./assets/button.webp">WebP Link</a>
+                <a class="asset-action" href="./assets/button.webp" download>WebP Download</a>
+                <a class="asset-action" href="./assets/button.jpeg">JPEG Link</a>
+                <a class="asset-action" href="./assets/button.jpeg" download>JPEG Download</a>
+              </div>
+            </article>
+          </div>
+          <pre style="margin-top: 1.2em;"><code>
+// HTML Embed
+
+```html
+&lt;img src="https://byoclaw.fun/button.webp"
+  style="max-height: 45px; width: auto; border-radius: 4px"
+  alt="BYOClaw button" /&gt;
+```
+
+<img src="./assets/button.webp" alt="BYOClaw button (WebP)" style="max-height: 45px; width: auto; border-radius: 4px" />
+          </code></pre>
+
+        </section>
+      </div>
+
+      <section>
+        <h2>Future Work</h2>
+        <div class="spec-grid">
+          <article class="placeholder placeholder-feature">
+            <h3>Tightly-Scoped Longer Term Tokens</h3>
+            <ul class="req-list">
+              <li>NOW: your phone buzzes for every new comment on a post.</li>
+              <li>
+                WITH BYOClaw: your phone only buzzes if your Claw decides the
+                comment interests you.
+              </li>
+            </ul>
+            <p style="margin-top: 0.8em">
+              Your Claw gets a tightly scoped token for new comments on only
+              that post. It sets up a new cron job to poll. If the comment
+              interests you, it buzzes your phone, otherwise it goes to
+              <code>/dev/null</code>.
+            </p>
+          </article>
+          <article class="placeholder placeholder-feature">
+            <h3>Scoped Permissions</h3>
+            <p>
+              Define granular, revocable capabilities so a token can be limited
+              to a narrow action set like comment triage or one shelf.
+            </p>
+          </article>
+          <article class="placeholder placeholder-feature">
+            <h3>Richer Discovery Metadata</h3>
+            <p>
+              Publish machine-readable metadata that helps Claws discover the
+              API surface, policy limits, and renewal flows with minimal prompt
+              overhead.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Creator / Maintainer</h2>
+        <p>
+          <a href="https://github.com/roover-glitch">roover-glitch</a> — Creator and maintainer of BYOClaw.
+        </p>
+      </section>
+
+      <footer>
+        <p>◇ <a href="https://byoclaw.fun">byoclaw.fun</a> ◇</p>
+
+        <div class="footer-links">
+          <a href="https://x.com/ByoClaw" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X (Twitter)
+          </a>
+          <a href="https://github.com/roover-glitch/byoclaw" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Flaunch
+          </a>
+        </div>
+
+        <div class="ca-box">
+          <span class="ca-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Contract Address <span class="ca-chain">BASE</span>
+          </span>
+          <div class="ca-address-row">
+            <code class="ca-address" id="ca-address">0x0000000000000000000000000000000000000000</code>
+            <button class="ca-copy-btn" onclick="copyCa()" title="Copy address">
+              <svg id="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg id="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- AI Chat Bubble -->
+    <div id="chat-bubble" onclick="toggleChat()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="chat-bubble-label">Ask AI</span>
+    </div>
+
+    <div id="chat-panel">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <div class="chat-avatar">✦</div>
+          <div>
+            <div class="chat-title">BYOClaw AI</div>
+            <div class="chat-subtitle">Powered by Claude</div>
+          </div>
+        </div>
+        <button class="chat-close" onclick="toggleChat()">✕</button>
+      </div>
+      <div id="chat-messages">
+        <div class="chat-msg assistant">
+          <div class="chat-msg-content">Hey! I'm the BYOClaw AI assistant. Ask me anything about the BYOClaw specification, how to implement it, or anything else! 🦀</div>
+        </div>
+      </div>
+      <div class="chat-suggestions" id="chat-suggestions">
+        <button class="chat-suggestion" onclick="askSuggestion(this)">What is BYOClaw?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">How do I implement it?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">How to buy $BYOCLAW?</button>
+        <button class="chat-suggestion" onclick="askSuggestion(this)">Socials & community</button>
+      </div>
+      <div class="chat-input-area">
+        <textarea id="chat-input" placeholder="Ask about BYOClaw..." rows="1" onkeydown="handleKey(event)"></textarea>
+        <button id="chat-send" onclick="sendMessage()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <style>
+      /* Footer links */
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+      }
+      .footer-link:hover { color: white; }
+
+      /* CA Box */
+      .ca-box {
+        margin: 1.5rem auto 0;
+        max-width: 520px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 0.9rem 1.2rem;
+        backdrop-filter: blur(8px);
+      }
+      .ca-label {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255,255,255,0.45);
+        margin-bottom: 0.5rem;
+      }
+      .ca-chain {
+        background: rgba(99,102,241,0.3);
+        color: #a5b4fc;
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+      }
+      .ca-address-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .ca-address {
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.85);
+        word-break: break-all;
+        flex: 1;
+      }
+      .ca-copy-btn {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 6px;
+        padding: 5px 8px;
+        cursor: pointer;
+        color: rgba(255,255,255,0.7);
+        display: flex;
+        align-items: center;
+        transition: background 0.2s;
+        flex-shrink: 0;
+      }
+      .ca-copy-btn:hover { background: rgba(255,255,255,0.15); }
+
+      /* Chat bubble */
+      #chat-bubble {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 4px 24px rgba(99,102,241,0.5);
+        z-index: 1000;
+        transition: transform 0.2s, box-shadow 0.2s;
+        user-select: none;
+      }
+      #chat-bubble:hover { transform: translateY(-2px); box-shadow: 0 6px 32px rgba(99,102,241,0.7); }
+
+      /* Chat panel */
+      #chat-panel {
+        position: fixed;
+        bottom: 90px;
+        right: 24px;
+        width: 360px;
+        max-height: 520px;
+        background: #0f0f1a;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+        overflow: hidden;
+      }
+      #chat-panel.open { display: flex; }
+
+      .chat-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        background: rgba(255,255,255,0.03);
+      }
+      .chat-header-left { display: flex; align-items: center; gap: 10px; }
+      .chat-avatar {
+        width: 34px; height: 34px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1rem;
+      }
+      .chat-title { font-weight: 700; font-size: 0.9rem; color: white; }
+      .chat-subtitle { font-size: 0.7rem; color: rgba(255,255,255,0.4); }
+      .chat-close {
+        background: none; border: none; color: rgba(255,255,255,0.4);
+        cursor: pointer; font-size: 1rem; padding: 4px;
+        transition: color 0.2s;
+      }
+      .chat-close:hover { color: white; }
+
+      #chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .chat-msg { display: flex; }
+      .chat-msg.user { justify-content: flex-end; }
+      .chat-msg-content {
+        max-width: 85%;
+        padding: 9px 13px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: white;
+      }
+      .chat-msg.assistant .chat-msg-content {
+        background: rgba(255,255,255,0.07);
+        border-radius: 4px 12px 12px 12px;
+      }
+      .chat-msg.user .chat-msg-content {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border-radius: 12px 4px 12px 12px;
+      }
+      .chat-msg.typing .chat-msg-content { opacity: 0.6; font-style: italic; }
+
+      .chat-input-area {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        padding: 10px 12px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      #chat-input {
+        flex: 1;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 8px;
+        color: white;
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        resize: none;
+        font-family: inherit;
+        outline: none;
+        max-height: 100px;
+        overflow-y: auto;
+      }
+      #chat-input::placeholder { color: rgba(255,255,255,0.3); }
+      #chat-send {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 10px;
+        cursor: pointer;
+        color: white;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s;
+      }
+      #chat-send:hover { opacity: 0.85; }
+      #chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+
+
+      .chat-suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 8px 12px 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .chat-suggestion {
+        background: rgba(99,102,241,0.15);
+        border: 1px solid rgba(99,102,241,0.35);
+        border-radius: 20px;
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        font-family: inherit;
+        text-align: left;
+      }
+      .chat-suggestion:hover {
+        background: rgba(99,102,241,0.35);
+        color: white;
+      }
+
+      @media (max-width: 420px) {
+        #chat-panel { width: calc(100vw - 32px); right: 16px; }
+        #chat-bubble { bottom: 16px; right: 16px; }
+      }
+    </style>
+    <script>
+      // CA Copy
+      function copyCa() {
+        const addr = document.getElementById('ca-address').textContent;
+        navigator.clipboard.writeText(addr).then(() => {
+          document.getElementById('copy-icon').style.display = 'none';
+          document.getElementById('check-icon').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('copy-icon').style.display = 'block';
+            document.getElementById('check-icon').style.display = 'none';
+          }, 2000);
+        });
+      }
+
+      // Chat
+      let chatOpen = false;
+      let chatHistory = [];
+
+      function toggleChat() {
+        chatOpen = !chatOpen;
+        document.getElementById('chat-panel').classList.toggle('open', chatOpen);
+      }
+
+      function handleKey(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      }
+
+      function addMsg(role, text) {
+        const msgs = document.getElementById('chat-messages');
+        const div = document.createElement('div');
+        div.className = `chat-msg ${role}`;
+        div.innerHTML = `<div class="chat-msg-content">${text.replace(/\n/g,'<br>')}</div>`;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+        return div;
+      }
+
+      function askSuggestion(btn) {
+        document.getElementById('chat-input').value = btn.textContent;
+        sendMessage();
+      }
+
+      async function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        input.value = '';
+        input.style.height = 'auto';
+        addMsg('user', text);
+        chatHistory.push({ role: 'user', content: text });
+
+        const sendBtn = document.getElementById('chat-send');
+        sendBtn.disabled = true;
+        const typingDiv = addMsg('typing', '...');
+        typingDiv.classList.add('typing');
+
+        try {
+          const res = await fetch('https://byoclaw-proxy.charliefranklynn.workers.dev/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'claude-sonnet-4-20250514',
+              max_tokens: 1024,
+              system: `You are the BYOClaw AI assistant embedded at byoclaw.fun. Answer questions clearly and concisely.
+
+About BYOClaw:
+- BYOClaw is a specification that lets humans bring their own OpenClaw (AI agent) to websites for restricted API access
+- It enables an app-less future where websites expose functionality through Claw APIs
+- Website: https://byoclaw.fun
+- Token: $BYOCLAW on Base (ETH) chain
+
+Social Media & Community:
+- Twitter/X: https://x.com/ByoClaw
+- Flaunch: https://github.com/roover-glitch/byoclaw
+- Creator: roover-glitch (https://github.com/roover-glitch)
+
+How to buy $BYOCLAW:
+- Contract Address (Base): available on the website footer
+- Buy on Base chain via DEX (Uniswap, etc)
+- Visit byoclaw.fun for the contract address
+
+Specification:
+- Version: 0.1.0
+- Key principles: restricted API, short-lived tokens (max 60 min), no destructive actions, no sensitive data
+- Implement by telling your AI: "Implement byoclaw.fun"`,
+              messages: chatHistory
+            })
+          });
+
+          const data = await res.json();
+          typingDiv.remove();
+
+          if (data.content && data.content[0]) {
+            const reply = data.content[0].text;
+            chatHistory.push({ role: 'assistant', content: reply });
+            addMsg('assistant', reply);
+          } else {
+            addMsg('assistant', 'Something went wrong, please try again.');
+          }
+        } catch (err) {
+          typingDiv.remove();
+          addMsg('assistant', 'Error connecting. Please try again.');
+        }
+        sendBtn.disabled = false;
+      }
+
+      // Auto-resize textarea
+      document.addEventListener('DOMContentLoaded', () => {
+        const ta = document.getElementById('chat-input');
+        if (ta) {
+          ta.addEventListener('input', () => {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+          });
+        }
+      });
+    </script>
+
+    <script>
+      function fitApplessHeadingToWidth() {
+        const heading = document.getElementById('usecase-appless-heading');
+        if (!heading) return;
+
+        if (window.matchMedia('(max-width: 640px)').matches) {
+          heading.style.removeProperty('white-space');
+          heading.style.removeProperty('font-size');
+          return;
+        }
+
+        const containerWidth = heading.clientWidth;
+        if (!containerWidth) return;
+
+        heading.style.whiteSpace = 'nowrap';
+
+        let low = 12;
+        let high = 120;
+        let best = 12;
+
+        while (low <= high) {
+          const mid = (low + high) / 2;
+          heading.style.fontSize = `${mid}px`;
+
+          if (heading.scrollWidth <= containerWidth) {
+            best = mid;
+            low = mid + 0.25;
+          } else {
+            high = mid - 0.25;
+          }
+        }
+
+        heading.style.fontSize = `${best.toFixed(2)}px`;
+      }
+
+      let headingFitScheduled = false;
+      function scheduleHeadingFit() {
+        if (headingFitScheduled) return;
+        headingFitScheduled = true;
+
+        requestAnimationFrame(() => {
+          headingFitScheduled = false;
+          fitApplessHeadingToWidth();
+        });
+      }
+
+      window.addEventListener('load', () => {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(scheduleHeadingFit);
+          return;
+        }
+
+        scheduleHeadingFit();
+      });
+
+      window.addEventListener('resize', scheduleHeadingFit, { passive: true });
+      window.addEventListener('orientationchange', scheduleHeadingFit, {
+        passive: true,
+      });
+    </script>
+  </body>
+</html>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5E0V275QM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M5E0V275QM');
+</script>
